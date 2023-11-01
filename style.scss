@@ -1,0 +1,32 @@
+img {
+  height: 150px;
+}
+
+.image_slider {
+  display: flex;
+}
+
+.slider_card {
+  margin: 5px;
+}
+.upcoming_card_text,
+.slider_card_text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.genres {
+  display: inline-block;
+  padding: 2px;
+  margin: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+.slider_arrows {
+  height: 20px;
+}
