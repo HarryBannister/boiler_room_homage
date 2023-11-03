@@ -1,33 +1,302 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* Mostly equivalates to 10px but allows users accessibility zoom settings to work*/
+  /* font-size: 10px; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*   color-scheme: dark light; */
+  min-height: 100vh;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* LAYOUT DEBUG */
+/* { */
+/*       outline: 3px solid orange; */
+/*       background-color: hsla(120, 50%, 50%, 0.18); */
+/* } */
+body {
+  font-size: 1.6rem;
+  margin: 0;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Try to keep your margins going in one direction to avoid margin collapase or grounding. I switch all the top margins off to avoid this issue. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+blockquote,
+address,
+article,
+aside,
+details,
+dialogue,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+header,
+hr,
+main,
+nav,
+pre,
+section,
+table,
+p {
+  margin-top: 0;
+  margin-block-start: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  /* You MUST make sure that links stand out from nomal text though...*/
+}
+
+/*
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+  */
+/* Because we us <ul>s for lists that we don't always want bulletted. */
+ul,
+li {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* To make actual bulletted lists */
+ul.typographic {
+  list-style: initial;
+  padding-inline-start: 20px;
+}
+
+/* stops icons being the target of JS click events */
+.btn *,
+button * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+/* inherits the font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*****************************
+* ACCESSIBILITY
+******************************/
+/* For 'accessibility text'. If your button only has an image inside it that isn't good for accessibility. Put a span inside there and give it this class and put some descriptive text for what the button does into the span. */
+.visually-hidden,
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  clip-path: auto;
+  -webkit-clip-path: auto;
+  white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: Yantramanav, sans-serif;
+}
+
+.margin_bottom, h4, h2, p {
+  margin-bottom: 0;
+}
+
 img {
-  height: 150px;
+  height: 280px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  height: 70px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+}
+
+.logo_svg {
+  margin: 5px;
+  margin-left: 8px;
+  padding-right: 8px;
+  padding-top: 7px;
+}
+
+svg {
+  height: 46px;
+}
+
+.left_nav,
+.right_nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin-right: 19px;
+  letter-spacing: 0.02rem;
+  font-size: 1.56rem;
+  font-weight: 700;
+}
+
+.slider {
+  padding: 8px;
+}
+
+.slider > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider div p:nth-child(2) {
+  color: grey;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding-left: 8px;
 }
 
 .image_slider {
   display: flex;
 }
 
-.slider_card {
-  margin: 5px;
+.new .slider_arrows {
+  height: 20px;
+  background-color: white;
 }
 
-.upcoming_card_text,
-.slider_card_text {
+.slider_card {
+  height: 350px;
+  padding: 8px;
+}
+
+.slider_card a img {
+  width: 280px;
+  height: auto;
+}
+
+.card_text {
   display: flex;
   justify-content: space-between;
+  height: 50px;
+}
+
+h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.card_text div:nth-child(2) {
+  color: grey;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.card_text div p:nth-child(2) {
+  color: yellow;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.card_text div p:nth-child(3) {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.card_text div span:nth-child(2) {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.card_text div span:nth-child(3) {
+  color: rgb(231, 39, 30);
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding-left: 3px;
 }
 
 .genres {
   display: inline-block;
-  padding: 2px;
+  padding: 6px;
   margin: 2px;
   border-style: solid;
-  border-color: black;
+  border-color: rgb(51, 51, 51);
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-a {
-  text-decoration: none;
+.footer_menu {
+  display: flex;
+  justify-content: space-between;
 }
 
-.slider_arrows {
-  height: 20px;
+.footer_submenu {
+  display: flex;
 }/*# sourceMappingURL=style.css.map */
