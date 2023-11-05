@@ -168,15 +168,24 @@ select {
 // GENERAL RULES
 
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 
   font-family: Yantramanav, sans-serif;
+  letter-spacing: 0.02rem;
+  font-size: 1.4rem;
 }
 
 @mixin font($size, $weight) {
   font-size: $size;
   font-weight: $weight;
+}
+
+@mixin flex($display, $wrap, $justify_content, $align_items) {
+  display: $display;
+  flex-wrap: $wrap;
+  justify-content: $justify_content;
+  align-items: $align_items;
 }
 
 .margin_bottom {
@@ -194,10 +203,7 @@ img {
 // HEADER
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  @include flex(flex, nowrap, space-between, center);
   background-color: #000000;
   height: 70px;
 }
@@ -220,34 +226,37 @@ svg {
 
 .left_nav,
 .right_nav {
-  display: flex;
-  align-items: center;
+  @include flex(flex, nowrap, none, center);
 }
 
 nav a {
   margin-right: 19px;
 
-  letter-spacing: 0.02rem;
   @include font(1.56rem, 700);
 }
 
+.section {
+  margin-bottom: 60px;
+}
 // MAIN
 
 // Slider
+
+.section > div {
+  margin-bottom: 20px;
+}
 
 .slider {
   padding: 8px;
 }
 
 .slider > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(flex, nowrap, space-between, center);
 }
 
-.slider div p:nth-child(2) {
+.slider a > p {
   color: grey;
-  @include font(1.4rem, 700);
+  @include font(1.4rem, 900);
 }
 
 h2 {
@@ -265,6 +274,21 @@ h2 {
   background-color: white;
 }
 
+.play_button {
+  @include flex(flex, nowrap, none, center);
+  color: white;
+  background-color: rgb(112, 187, 102);
+  padding: 6px 17px;
+  border-radius: 30px;
+  @include font(1.2rem, 700);
+}
+
+a > svg {
+  margin-right: 5px;
+  height: 8px;
+  fill: white;
+}
+
 // Slider Card
 
 .slider_card {
@@ -277,9 +301,13 @@ h2 {
   height: auto;
 }
 
+.new_to_boiler_room > .slider_card,
+.member_favourites > .slider_card,
+.best_of > .slider_card {
+  height: 200px;
+}
+
 .card_text {
-  display: flex;
-  justify-content: space-between;
   height: 50px;
 }
 
@@ -288,12 +316,8 @@ h4 {
   @include font(1.4rem, 700);
 }
 
-// .upcoming_card_text div {
-//   width: 55%;
-// }
-
-.card_text div:nth-child(2) {
-  color: grey;
+.icon {
+  color: rgb(51, 51, 51);
   @include font(1.2rem, 700);
   text-align: right;
 }
@@ -317,18 +341,117 @@ h4 {
   padding-left: 3px;
 }
 
+.card_text_grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+}
+
 .genres {
   display: inline-block;
-  padding: 6px;
-  margin: 2px;
-  border-style: solid;
-  border-color: rgb(51, 51, 51);
-  @include font(1rem, 500);
+  padding: 3px 6px;
+  margin-top: 5px;
+  margin-right: 2px;
+  border: 1px solid rgb(51, 51, 51);
+  @include font(1.1rem, 400);
+}
+
+// CITIES
+
+.cities {
+  padding: 8px;
+}
+
+.cities_title {
+  @include flex(flex, nowrap, space-between, center);
+}
+
+.cities_title a > p {
+  @include font(1.4rem, 700);
+  opacity: 0.5;
+}
+
+p > svg {
+  height: 9px;
+  // color: rgb(51, 51, 51);
+}
+
+h2 + p {
+  padding-left: 8px;
+}
+
+.map_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, 1fr);
+}
+
+@mixin background_map_image($image) {
+  background-image: $image;
+  background-size: cover;
+  background-position: center;
+}
+
+.city_map {
+  height: 50px;
+  width: 170px;
+  margin: 8px;
+
+  @include flex(flex, nowrap, center, center);
+
+  @include font(1.4rem, 700);
+}
+
+.london_map {
+  @include background_map_image(url(./assets/map_images/london_map.avif));
+}
+
+.berlin_map {
+  @include background_map_image(url(./assets/map_images/berlin_map.avif));
+}
+
+.ny_map {
+  @include background_map_image(url(./assets/map_images/ny_map.avif));
+}
+
+.la_map {
+  @include background_map_image(url(./assets/map_images/la_map.avif));
+}
+
+.amsterdam_map {
+  @include background_map_image(url(./assets/map_images/amsterdam_map.avif));
+}
+
+.paris_map {
+  @include background_map_image(url(./assets/map_images/paris_map.avif));
+}
+
+.mexico_map {
+  @include background_map_image(url(./assets/map_images/mexico_map.avif));
+}
+
+.barcelona_map {
+  @include background_map_image(url(./assets/map_images/barcelona_map.avif));
+}
+
+.sao_paulo_map {
+  @include background_map_image(url(./assets/map_images/paulo_map.avif));
+}
+
+.madrid_map {
+  @include background_map_image(url(./assets/map_images/madrid_map.avif));
+}
+
+.tokyo_map {
+  @include background_map_image(url(./assets/map_images/tokyo_map.avif));
+}
+
+.johannesburg_map {
+  @include background_map_image(url(./assets/map_images/johannesburg_map.avif));
 }
 
 .footer_menu {
-  display: flex;
-  justify-content: space-between;
+  @include flex(flex, nowrap, space-between, none);
 }
 
 .footer_submenu {

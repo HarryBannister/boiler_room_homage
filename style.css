@@ -150,9 +150,11 @@ select {
   }
 }
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-family: Yantramanav, sans-serif;
+  letter-spacing: 0.02rem;
+  font-size: 1.4rem;
 }
 
 .margin_bottom, h4, h2, p {
@@ -165,6 +167,7 @@ img {
 
 nav {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   background-color: #000000;
@@ -190,14 +193,23 @@ svg {
 .left_nav,
 .right_nav {
   display: flex;
+  flex-wrap: nowrap;
+  justify-content: none;
   align-items: center;
 }
 
 nav a {
   margin-right: 19px;
-  letter-spacing: 0.02rem;
   font-size: 1.56rem;
   font-weight: 700;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+.section > div {
+  margin-bottom: 20px;
 }
 
 .slider {
@@ -206,14 +218,15 @@ nav a {
 
 .slider > div {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
 }
 
-.slider div p:nth-child(2) {
+.slider a > p {
   color: grey;
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 h2 {
@@ -231,6 +244,25 @@ h2 {
   background-color: white;
 }
 
+.play_button {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: none;
+  align-items: center;
+  color: white;
+  background-color: rgb(112, 187, 102);
+  padding: 6px 17px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+a > svg {
+  margin-right: 5px;
+  height: 8px;
+  fill: white;
+}
+
 .slider_card {
   height: 350px;
   padding: 8px;
@@ -241,9 +273,13 @@ h2 {
   height: auto;
 }
 
+.new_to_boiler_room > .slider_card,
+.member_favourites > .slider_card,
+.best_of > .slider_card {
+  height: 200px;
+}
+
 .card_text {
-  display: flex;
-  justify-content: space-between;
   height: 50px;
 }
 
@@ -252,8 +288,8 @@ h4 {
   font-weight: 700;
 }
 
-.card_text div:nth-child(2) {
-  color: grey;
+.icon {
+  color: rgb(51, 51, 51);
   font-size: 1.2rem;
   font-weight: 700;
   text-align: right;
@@ -282,19 +318,142 @@ h4 {
   padding-left: 3px;
 }
 
+.card_text_grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+}
+
 .genres {
   display: inline-block;
-  padding: 6px;
-  margin: 2px;
-  border-style: solid;
-  border-color: rgb(51, 51, 51);
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 3px 6px;
+  margin-top: 5px;
+  margin-right: 2px;
+  border: 1px solid rgb(51, 51, 51);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.cities {
+  padding: 8px;
+}
+
+.cities_title {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cities_title a > p {
+  font-size: 1.4rem;
+  font-weight: 700;
+  opacity: 0.5;
+}
+
+p > svg {
+  height: 9px;
+}
+
+h2 + p {
+  padding-left: 8px;
+}
+
+.map_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.city_map {
+  height: 50px;
+  width: 170px;
+  margin: 8px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.london_map {
+  background-image: url(./assets/map_images/london_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.berlin_map {
+  background-image: url(./assets/map_images/berlin_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.ny_map {
+  background-image: url(./assets/map_images/ny_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.la_map {
+  background-image: url(./assets/map_images/la_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.amsterdam_map {
+  background-image: url(./assets/map_images/amsterdam_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.paris_map {
+  background-image: url(./assets/map_images/paris_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.mexico_map {
+  background-image: url(./assets/map_images/mexico_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.barcelona_map {
+  background-image: url(./assets/map_images/barcelona_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.sao_paulo_map {
+  background-image: url(./assets/map_images/paulo_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.madrid_map {
+  background-image: url(./assets/map_images/madrid_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.tokyo_map {
+  background-image: url(./assets/map_images/tokyo_map.avif);
+  background-size: cover;
+  background-position: center;
+}
+
+.johannesburg_map {
+  background-image: url(./assets/map_images/johannesburg_map.avif);
+  background-size: cover;
+  background-position: center;
 }
 
 .footer_menu {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: none;
 }
 
 .footer_submenu {
