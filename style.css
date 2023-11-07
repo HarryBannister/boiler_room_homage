@@ -149,12 +149,33 @@ select {
     scroll-behavior: auto !important;
   }
 }
+* *::-webkit-scrollbar {
+  width: 0;
+}
+* *::-webkit-scrollbar-track {
+  background: transparent;
+}
+* *::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+}
+
 body {
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
   font-family: Yantramanav, sans-serif;
   letter-spacing: 0.02rem;
   font-size: 1.4rem;
+}
+
+.arrows, .arrow_right,
+.arrow_left {
+  height: 30px;
+  background-color: white;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 50%;
+  opacity: 0.4;
 }
 
 .margin_bottom, h4, h2, p {
@@ -177,6 +198,7 @@ nav {
 header {
   position: sticky;
   top: 0;
+  z-index: 2;
 }
 
 .logo_svg {
@@ -185,8 +207,7 @@ header {
   padding-right: 8px;
   padding-top: 7px;
 }
-
-svg {
+.logo_svg svg {
   height: 46px;
 }
 
@@ -198,6 +219,10 @@ svg {
   align-items: center;
 }
 
+nav div a:last-child {
+  min-width: 126px;
+}
+
 nav a {
   margin-right: 19px;
   font-size: 1.56rem;
@@ -205,10 +230,94 @@ nav a {
 }
 
 .section {
-  margin-bottom: 60px;
+  height: 424px;
+  margin-bottom: 30px;
 }
 
-.section > div {
+.small_section {
+  height: 350px;
+}
+
+.carousel_viewport {
+  height: 800px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: none;
+  align-items: none;
+  overflow-x: scroll;
+}
+
+.carousel_item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 100%;
+}
+
+.carousel_prev,
+.carousel_next {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+.carousel_prev {
+  left: 0;
+}
+
+.carousel_next {
+  right: 0;
+}
+
+.arrow_right {
+  transform: rotate(90deg);
+}
+
+.arrow_left {
+  transform: rotate(270deg);
+}
+
+video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 60% 100%;
+     object-position: 60% 100%;
+  z-index: -1;
+}
+
+.main_slider_text {
+  background-color: rgb(0, 0, 0);
+  margin: 18px;
+  padding: 13px;
+}
+
+.main_slider_text h2 {
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+.main_slider_text {
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.main_slider_text button {
+  background-color: white;
+  border-style: none;
+  padding: 8px 22px;
+  margin: 16px 12px 10px 9px;
+  font-weight: 700;
+}
+
+.section {
   margin-bottom: 20px;
 }
 
@@ -217,6 +326,7 @@ nav a {
 }
 
 .slider > div {
+  margin-bottom: 20px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -233,6 +343,7 @@ h2 {
   font-size: 2.5rem;
   font-weight: 700;
   padding-left: 8px;
+  line-height: 2.7rem;
 }
 
 .image_slider {
@@ -252,6 +363,7 @@ h2 {
   color: white;
   background-color: rgb(112, 187, 102);
   padding: 6px 17px;
+  margin-left: 70px;
   border-radius: 30px;
   font-size: 1.2rem;
   font-weight: 700;
@@ -264,19 +376,56 @@ a > svg {
 }
 
 .slider_card {
-  height: 350px;
+  height: 300px;
   padding: 8px;
 }
 
 .slider_card a img {
   width: 280px;
   height: auto;
+  position: relative;
 }
 
 .new_to_boiler_room > .slider_card,
 .member_favourites > .slider_card,
 .best_of > .slider_card {
   height: 200px;
+}
+
+.overlay_container {
+  position: relative;
+}
+
+.overlay,
+.overlay_svg {
+  position: absolute;
+  width: 280px;
+  height: 140px;
+  bottom: 0;
+  right: 0;
+  transform: translateY(100%);
+  display: none;
+}
+
+.overlay {
+  opacity: 0.1;
+  background-color: #000000;
+}
+
+.overlay_svg {
+  background-color: rgb(19, 19, 19);
+  opacity: 0.98;
+  height: 50px;
+  width: 50px;
+}
+
+.overlay_container:hover .overlay,
+.overlay_container:hover .overlay_svg {
+  transform: translateY(0%);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .card_text {
@@ -335,6 +484,7 @@ h4 {
 }
 
 .cities {
+  height: 500px;
   padding: 8px;
 }
 
@@ -449,13 +599,86 @@ h2 + p {
   background-position: center;
 }
 
+.footer {
+  background-color: rgb(19, 19, 19);
+}
+
+.mailing_list {
+  border-bottom: 1px solid rgb(34, 34, 34);
+  padding: 45px 18px;
+}
+.mailing_list button {
+  font-size: 1.7rem;
+  font-weight: 700;
+  background-color: rgb(112, 187, 102);
+  color: white;
+  border-style: none;
+  width: 100%;
+  padding: 10px;
+}
+.mailing_list p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.5;
+  line-height: 1.4rem;
+  margin-top: 8px;
+}
+.mailing_list p a {
+  text-decoration: underline;
+}
+
+h5 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+}
+
+.apple_music_link {
+  text-align: center;
+  margin: 30px;
+}
+.apple_music_link img {
+  height: 35px;
+}
+
 .footer_menu {
+  line-height: 1.4rem;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: none;
 }
+.footer_menu li {
+  padding-bottom: 19px;
+}
+
+.footer_menu > div {
+  padding: 10px;
+}
 
 .footer_submenu {
   display: flex;
+}
+.footer_submenu div {
+  padding-right: 15px;
+}
+
+h6 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.4rem;
+  height: 20px;
+}
+
+.footer_logos {
+  display: flex;
+  justify-content: center;
+}
+
+.copyright {
+  padding-top: 10px;
+  padding-bottom: 40px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
 }/*# sourceMappingURL=style.css.map */
