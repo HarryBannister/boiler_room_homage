@@ -18,13 +18,7 @@ html:focus-within {
   box-sizing: inherit;
 }
 
-/* LAYOUT DEBUG */
-/* { */
-/*       outline: 3px solid orange; */
-/*       background-color: hsla(120, 50%, 50%, 0.18); */
-/* } */
 body {
-  font-size: 1.6rem;
   margin: 0;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
@@ -160,9 +154,14 @@ select {
   border: none;
 }
 
+:root {
+  --background_colour: rgb(0, 0, 0);
+  --text_colour: rgb(255, 255, 255);
+}
+
 body {
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
+  background-color: var(--background_colour);
+  color: var(--text_colour);
   font-family: Yantramanav, sans-serif;
   letter-spacing: 0.02rem;
   font-size: 1.4rem;
@@ -170,7 +169,6 @@ body {
 
 .arrows, .arrow_right,
 .arrow_left {
-  color: white;
   height: 60px;
   margin: 10px;
   padding: 8px;
@@ -182,18 +180,14 @@ body {
   margin-bottom: 0;
 }
 
-img {
-  height: 280px;
-}
-
 header {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 3;
   border-bottom: 1px solid rgb(34, 34, 34);
-  background-color: rgb(0, 0, 0);
+  background-color: var(--background_colour);
 }
 
 nav {
@@ -205,9 +199,7 @@ nav {
 }
 
 .header_logo_svg {
-  margin: 5px;
-  margin-left: 8px;
-  padding-right: 8px;
+  margin: 5px 8px;
 }
 .header_logo_svg svg {
   height: 46px;
@@ -220,6 +212,7 @@ nav {
   align-items: center;
   position: relative;
   display: inline-block;
+  height: 100%;
 }
 
 .left_nav,
@@ -228,12 +221,11 @@ nav {
   position: absolute;
   width: 215px;
   height: 40px;
-  z-index: 5;
 }
 
 .left_nav a,
 .right_nav a {
-  background-color: black;
+  background-color: var(--background_colour);
   padding: 15px;
   display: block;
 }
@@ -261,7 +253,7 @@ nav {
 }
 
 .burger_menu {
-  margin: 5px;
+  margin: 10px;
 }
 
 .carousel_viewport {
@@ -317,7 +309,7 @@ nav {
   transform: rotate(270deg);
 }
 
-video {
+.carousel_item video {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -329,7 +321,7 @@ video {
 }
 
 .main_slider_text {
-  background-color: rgb(0, 0, 0);
+  background-color: var(--background_colour);
   margin: 18px;
   padding: 13px;
 }
@@ -355,7 +347,7 @@ video {
 
 .slider {
   height: 424px;
-  margin: 7px 0 14px 0px;
+  margin: 21px 0 0 0;
   padding: 8px;
 }
 
@@ -364,7 +356,6 @@ video {
 }
 
 .slider > div {
-  margin-bottom: 20px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -384,7 +375,7 @@ video {
   line-height: 2.7rem;
 }
 
-.image_slider {
+.slides {
   display: flex;
   overflow: hidden;
   overflow-x: scroll;
@@ -392,9 +383,8 @@ video {
   scroll-snap-type: y mandatory;
 }
 
-.new .slider_arrows {
-  height: 20px;
-  background-color: white;
+.carousel button {
+  display: none;
 }
 
 .play_button {
@@ -402,7 +392,7 @@ video {
   flex-wrap: nowrap;
   justify-content: none;
   align-items: center;
-  color: white;
+  color: var(--text_colour);
   background-color: rgb(112, 187, 102);
   padding: 6px 17px;
   margin-left: 70px;
@@ -414,12 +404,13 @@ video {
 a > svg {
   margin-right: 5px;
   height: 8px;
-  fill: white;
+  fill: rgb(255, 255, 255);
 }
 
 .slider_card {
-  height: 390px;
+  height: 370px;
   padding: 8px;
+  margin-top: 15px;
 }
 
 .slider_card a img {
@@ -482,7 +473,7 @@ h4 {
 }
 
 .card_text div p:nth-child(2) {
-  color: yellow;
+  color: rgb(255, 255, 0);
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -513,8 +504,7 @@ h4 {
 .genres {
   display: inline-block;
   padding: 3px 6px;
-  margin-top: 5px;
-  margin-right: 2px;
+  margin: 5px 2px 0 0;
   border: 1px solid rgb(51, 51, 51);
   font-size: 1.1rem;
   font-weight: 400;
@@ -546,7 +536,7 @@ h4 {
 }
 
 p > svg {
-  height: 9px;
+  height: 10px;
 }
 
 .map_grid {
@@ -653,7 +643,7 @@ p > svg {
   font-size: 1.7rem;
   font-weight: 700;
   background-color: rgb(112, 187, 102);
-  color: white;
+  color: var(--text_colour);
   border-style: none;
   height: 42px;
   width: 100%;
@@ -721,8 +711,7 @@ h6 {
 }
 
 .copyright {
-  padding-top: 10px;
-  padding-bottom: 40px;
+  padding: 10px 0 40px 0;
   text-align: center;
   font-size: 1.8rem;
   font-weight: 700;
@@ -767,6 +756,55 @@ h6 {
   }
   .carousel_item {
     scroll-margin-top: 70px;
+  }
+  .carousel {
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    display: flex;
+  }
+  .slides {
+    transition: transform 0.3s;
+    display: flex;
+    width: 100%;
+    overflow: visible;
+    overflow-x: none;
+  }
+  .slide {
+    flex: 0 100 100;
+  }
+  .navigation_buttons, .prev-button,
+  .next-button {
+    position: absolute;
+    top: 34%;
+    z-index: 2;
+    border-style: none;
+    background-color: #ffffff;
+    opacity: 0.9;
+    width: 40px;
+    height: 40px;
+    cursor: default;
+  }
+  .carousel:hover .navigation_buttons, .carousel:hover .prev-button,
+  .carousel:hover .next-button {
+    display: flex;
+    align-items: center;
+  }
+  .prev-button svg,
+  .next-button svg {
+    height: 30px;
+  }
+  .prev-button {
+    transform: rotate(270deg);
+    left: 0;
+  }
+  .next-button {
+    transform: rotate(90deg);
+    right: 28px;
+  }
+  .small_section_prev,
+  .small_section_next {
+    top: 25%;
   }
   .main_slider_text {
     max-width: 510px;
@@ -827,9 +865,6 @@ h6 {
     font-size: 1.4rem;
     font-weight: 700;
     padding-left: 3px;
-  }
-  .slider_card {
-    scroll-snap-align: center;
   }
   .cities {
     height: 560px;
