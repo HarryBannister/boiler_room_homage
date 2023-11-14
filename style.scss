@@ -701,6 +701,7 @@ h6 {
   @include font(1.4rem, 700);
   line-height: 1.4rem;
   height: 20px;
+  margin-bottom: 20px;
 }
 
 .footer_logos {
@@ -926,11 +927,11 @@ h6 {
   .footer_menu {
     padding: 0 4vw 0 4vw;
     justify-content: space-around;
+  }
 
-    h6 {
-      @include font(1.8rem, 700);
-      margin-bottom: 15px;
-    }
+  h6 {
+    @include font(1.8rem, 700);
+    margin-bottom: 15px;
 
     li {
       @include font(1.6rem, 400);
